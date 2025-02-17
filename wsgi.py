@@ -15,3 +15,18 @@ def initialize():
   db.session.add(bob)
   db.session.commit()
   print(bob)
+
+@app.cli.command("get-user", help="Retrieves a User")
+@click.argument('username', default='bob')
+def get_user(username):
+  bob = User.query.filter_by(username=username).first()
+  if not bob:
+    print(f'{username} not found!')
+    return
+  print(bob)
+
+@app.cli.command('get-users')
+def get_users():
+  # gets all objects of a model
+  users = User.query.all()
+  print(users)
