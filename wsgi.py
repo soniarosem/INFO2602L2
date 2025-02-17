@@ -12,3 +12,6 @@ def initialize():
   bob = User('bob', 'bob@mail.com', 'bobpass')
   print(bob)
   print('database intialized')
+  db.session.add(bob)
+  db.session.commit()
+  print(bob)
